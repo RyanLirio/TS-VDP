@@ -1,0 +1,10 @@
+//Serve pra voce passar configurações pro compilador TS
+//Não pode errar
+{
+    "compilerOptions": {
+        "outDir": "dist/js", //onde gravar os arquivos resultantes depois de compilar
+        "target": "ES6"//transforma pr ECMASCRIPT "X"
+    },
+    "include": ["app/**/*"]//toda subpasta e qualquer arquivo dentro de app, se tivesse mais pastas colocava , e o nome de outra pasta
+    //aqui voce informa os arquivos que quer que o comp leia
+}
