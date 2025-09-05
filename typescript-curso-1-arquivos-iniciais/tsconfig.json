@@ -4,7 +4,8 @@
     "compilerOptions": {
         "outDir": "dist/js", //onde gravar os arquivos resultantes depois de compilar
         "target": "ES6",//transforma pr ECMASCRIPT "X"
-        "noEmitOnError": true //Isso não vai deixar gerar um arquivo JS enquanto o TS não passar na compilação, não gerando um JS com problema
+        "noEmitOnError": true, //Isso não vai deixar gerar um arquivo JS enquanto o TS não passar na compilação, não gerando um JS com problema
+        "noImplicitAny": true
     },
     "include": ["app/**/*"]//toda subpasta e qualquer arquivo dentro de app, se tivesse mais pastas colocava , e o nome de outra pasta
     //aqui voce informa os arquivos que quer que o comp leia

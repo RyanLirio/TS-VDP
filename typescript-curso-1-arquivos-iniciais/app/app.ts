@@ -1,4 +1,9 @@
-import { Negociacao } from "./models/negociacao.js";
+import { NegociacaoController } from "./controllers/negociacao-controller.js";
 
-const negociacao = new Negociacao(new Date(), 10, 12.99);
-console.log(negociacao.volume);
+const controller = new NegociacaoController();
+
+const form = document.querySelector('.form');
+form.addEventListener('submit', event => {
+    event.preventDefault(); //cancela o comportamento padrao do formulario que é recarregar a pagina
+    controller.adiciona();
+})
