@@ -4,30 +4,22 @@ export class Negociacao {
     private _valor: number;
     */
     constructor(_data, //# = atributo privado
-    _quantidade, _valor) {
+    quantidade, valor) {
         this._data = _data;
-        this._quantidade = _quantidade;
-        this._valor = _valor;
+        this.quantidade = quantidade;
+        this.valor = valor;
         /*this._data = data;
         this._quantidade = quantidade;
         this._valor = valor; */ //declarando nos parametros as variaveis ele atribui automaticamente para as variaveis, reduzindo codigo
     }
-    get data() {
+    /*get data(): Date{
         return this._data;
-    }
-    set data(nova_data) {
-        this._data = nova_data;
-    }
-    get quantidade() {
-        return this._quantidade;
-    }
-    set quantidade(nova_quantidade) {
-        this._quantidade = nova_quantidade;
-    }
-    get valor() {
-        return this._valor;
-    }
+    }*/ //Não é necessario mais por conta do public readonly
     get volume() {
-        return this._quantidade * this._valor;
+        return this.quantidade * this.valor;
     }
+    get data() {
+        const data = new Date(this._data.getTime());
+        return data;
+    } //isso é um metodo de prog defensiva onde a primeira data inserida não poderá ser modificada
 }

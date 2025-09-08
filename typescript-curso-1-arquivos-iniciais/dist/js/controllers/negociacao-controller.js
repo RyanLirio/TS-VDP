@@ -11,6 +11,7 @@ export class NegociacaoController {
         const negociacao = this.criaNegociacao();
         this.negociacoes.adiciona(negociacao);
         console.log(this.negociacoes.lista());
+        negociacao.data.setDate(12); //teste de programação defensiva
         this.limparFormulario();
     }
     criaNegociacao() {
