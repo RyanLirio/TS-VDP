@@ -1,12 +1,16 @@
 export class Negociacao{
-    private _data: Date; //# = atributo privado
+    /*private _data: Date; //# = atributo privado
     private _quantidade: number;
     private _valor: number;
-
-    constructor(data: Date, quantidade: number, valor: number){
-        this._data = data;
+    */
+    constructor(
+        private _data: Date, //# = atributo privado
+        private _quantidade: number,
+        private _valor: number
+    ){
+        /*this._data = data;
         this._quantidade = quantidade;
-        this._valor = valor; 
+        this._valor = valor; *///declarando nos parametros as variaveis ele atribui automaticamente para as variaveis, reduzindo codigo
     }
 
     get data(): Date{
