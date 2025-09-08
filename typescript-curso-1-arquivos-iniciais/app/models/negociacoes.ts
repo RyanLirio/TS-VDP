@@ -8,8 +8,8 @@ export class Negociacoes{
 
     }
 
-    lista(): Array<Negociacao>{
-        return [...this.negociacoes];
+    lista(): ReadonlyArray<Negociacao>{//readonly permite somente a leitura do array mas funciona igual ao ARRAY<>
+        return this.negociacoes;
     }
 }
 
