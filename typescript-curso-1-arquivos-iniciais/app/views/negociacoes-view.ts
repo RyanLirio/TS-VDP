@@ -1,11 +1,7 @@
 import { Negociacoes } from "../models/negociacoes.js";
+import { View } from "./view.js";
 
-export class NegociacoesView{
-
-    private elemento: HTMLElement;
-    constructor(seletor: string){
-        this.elemento = document.querySelector(seletor)
-    }
+export class NegociacoesView extends View<Negociacoes>{
 
     template(model: Negociacoes): string{
         return `
@@ -16,7 +12,7 @@ export class NegociacoesView{
                     <th>QUANTIDADE</th>
                     <th>VALOR</th>
                 </tr>
-            </thead>
+            </thead> 
             <tbody>
                 ${model.lista().map(negociacao =>{//como se fosse um foreach
                     return `
@@ -30,11 +26,5 @@ export class NegociacoesView{
             </tbody>
         </table>
         `;//template string " `` " permite quebrar a linha sem precisar ficar concatenando e etc
-    }
-
-    update(model: Negociacoes):void{
-        const template = this.template(model);
-        console.log(template);
-        this.elemento.innerHTML = template;
     }
 }
