@@ -3,12 +3,12 @@ import { Negociacao } from "./negociacao";
 export class Negociacoes{
     private negociacoes: Array<Negociacao > = []; // == private negociacoes: Negociacao[] = [];
 
-    adiciona(negociacao: Negociacao): void{
+    public adiciona(negociacao: Negociacao): void{
         this.negociacoes.push(negociacao);
 
     }
     // == lista(): readonly Negociacao[]
-    lista(): ReadonlyArray<Negociacao>{//readonly permite somente a leitura do array mas funciona igual ao ARRAY<>
+    public lista(): ReadonlyArray<Negociacao>{//readonly permite somente a leitura do array mas funciona igual ao ARRAY<>
         return this.negociacoes;
     }
 }

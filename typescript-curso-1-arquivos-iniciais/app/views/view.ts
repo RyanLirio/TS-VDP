@@ -4,11 +4,11 @@ export abstract class View<T>{// o <T> é um generic, permite usarmos varios tip
         this.elemento = document.querySelector(seletor)!;
     }   
 
-    update(model: T):void{
+    public update(model: T):void{
         const template = this.template(model);
         this.elemento.innerHTML = template;
     }
 
-    abstract template(model: T):string;//sse template é pra ser sobreescrito pelo que for herdado, se não for, exibe esse erro
+    protected abstract template(model: T):string;//sse template é pra ser sobreescrito pelo que for herdado, se não for, exibe esse erro
 }  
 

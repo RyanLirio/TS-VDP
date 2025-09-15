@@ -2,6 +2,7 @@ import { Negociacao } from "../models/negociacao.js";
 import { Negociacoes } from "../models/negociacoes.js";
 import { NegociacoesView } from "../views/negociacoes-view.js";
 import { MensagemView } from "../views/mensagem-view.js";
+import { DiasDaSemana } from "../enums/dias-da-semana.js";
 export class NegociacaoController {
     constructor() {
         this.negociacoes = new Negociacoes;
@@ -14,12 +15,16 @@ export class NegociacaoController {
     }
     adiciona() {
         const negociacao = this.criaNegociacao();
-        this.negociacoes.adiciona(negociacao);
-        console.log(this.negociacoes.lista());
-        negociacao.data.setDate(12); //teste de programação defensiva
-        this.negociacoesView.update(this.negociacoes);
-        this.mensagemView.update('Negociação adicionada com sucesso!');
-        this.limparFormulario();
+        if (this.ehDiaUtil(negociacao.data)) {
+            this.negociacoes.adiciona(negociacao);
+            //console.log(this.negociacoes.lista())
+            //negociacao.data.setDate(12);//teste de programação defensiva
+            this.atualizaView();
+            this.limparFormulario();
+        }
+        else {
+            this.mensagemView.update('Apenas dias úteis são aceitos!');
+        }
     }
     criaNegociacao() {
         const exp = /-/g; //expressão regular /-/ e o g é de global pois eu quero todos os "-"
@@ -38,5 +43,17 @@ export class NegociacaoController {
         this.inputQuantidade.value = '';
         this.inputValor.value = '';
         this.inputQuantidade.focus();
+    }
+    atualizaView() {
+        this.negociacoesView.update(this.negociacoes);
+        this.mensagemView.update('Negociação adicionada com sucesso!');
+    }
+    ehDiaUtil(data) {
+        if (data.getDay() > DiasDaSemana.DOMINGO && data.getDay() <= DiasDaSemana.SEXTA) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 }
